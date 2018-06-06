@@ -1,0 +1,4 @@
+rest_controllers_v1:
+  type: rest
+  prefix: /api/{version}
+  resource: ../src/Controller/V1/

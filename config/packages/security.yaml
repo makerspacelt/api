@@ -1,0 +1,22 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory:
+          memory:
+            users:
+              tools:
+                password: '%env(TOOLS_PASS)%'
+                roles:
+                  - ROLE_GENERAL
+                  - ROLE_TOOLS
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            http_basic: ~
+    access_control:
+        - { path: ^/api, roles: ROLE_GENERAL }
