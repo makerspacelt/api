@@ -21,6 +21,11 @@ setPerms "${PROJECT_ROOT}/var"
 echo -e '\n## Preparing configs ...'
 cp "/home/project/.env" "${PROJECT_ROOT}/.env"
 
+echo -e '\n## Getting database'
+cd var
+git clone git@gitlab.com:makerspacelt/config/space-db.git
+cd ..
+
 echo -e '\n## Preparing environment ... '
 composer --no-interaction config -g optimize-autoloader true
 time SYMFONY_ENV=prod composer --no-interaction install --no-dev
